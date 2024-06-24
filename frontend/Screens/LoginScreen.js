@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Button, TextInput, View, StyleSheet, Image, Text } from "react-native";
+import {
+  Button,
+  TextInput,
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  Alert,
+} from "react-native";
 import axios from "axios";
 
 const LoginScreen = ({ navigation }) => {
@@ -19,6 +27,9 @@ const LoginScreen = ({ navigation }) => {
       })
       .catch((error) => {
         // Handle failed login here
+        Alert.alert("Oops...", "Your username or password is incorrect !", [
+          { text: "OK", onPress: () => navigation.navigate("Login") },
+        ]);
       });
   };
 

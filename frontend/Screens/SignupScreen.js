@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Button, TextInput, View, StyleSheet, Image, Text } from "react-native";
+import {
+  Button,
+  TextInput,
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  Alert,
+} from "react-native";
 import axios from "axios";
 
 const SignupScreen = ({ navigation }) => {
@@ -28,6 +36,9 @@ const SignupScreen = ({ navigation }) => {
       })
       .then((response) => {
         console.log("Signup successful:", response.data);
+        Alert.alert("Success", "Your account has been created !", [
+          { text: "OK", onPress: () => navigation.navigate("Login") },
+        ]);
       })
       .catch((error) => {
         console.error(

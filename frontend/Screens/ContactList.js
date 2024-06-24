@@ -52,7 +52,12 @@ const ContactListPage = ({ route }) => {
             paddingTop: 25,
           }}
         ></Text> */}
-        <Button title="Add new contact" onPress={handleButtonPress} />
+        <Button
+          title="New contact"
+          onPress={handleButtonPress}
+          color="black"
+          backgroundColor="white"
+        />
         <Modal
           animationType="slide"
           transparent={true}
@@ -106,7 +111,8 @@ const styles = StyleSheet.create({
   },
   groupContainer: {
     backgroundColor: "#fff",
-    marginBottom: 10,
+    marginTop: 10,
+    marginBottom: 5,
     padding: 10,
     borderRadius: 5,
     shadowColor: "#000",

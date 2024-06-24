@@ -55,7 +55,12 @@ const ChatListPage = ({ route }) => {
             paddingTop: 25,
           }}
         ></Text> */}
-        <Button title="New Chat" onPress={handleButtonPress} />
+        <Button
+          title="New Chat"
+          onPress={handleButtonPress}
+          color="black"
+          backgroundColor="white"
+        />
         <Modal
           animationType="slide"
           transparent={true}
@@ -110,7 +115,8 @@ const styles = StyleSheet.create({
   },
   groupContainer: {
     backgroundColor: "#fff",
-    marginBottom: 10,
+    marginTop: 10,
+    marginBottom: 3,
     padding: 10,
     borderRadius: 5,
     shadowColor: "#000",
