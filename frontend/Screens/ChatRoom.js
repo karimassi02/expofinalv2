@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, Button, ScrollView } from "react-native";
 
 const Chatroom = ({ groupName }) => {
@@ -11,6 +11,34 @@ const Chatroom = ({ groupName }) => {
       setInputMessage("");
     }
   };
+
+  // useEffect(() => {
+  //   fetchMessages();
+  // }, []);
+
+  // const fetchMessages = async () => {
+  //   const response = await fetch("/messages");
+  //   const data = await response.json();
+  //   setMessages(data);
+  // };
+
+  // const sendMessage = async () => {
+  //   if (inputMessage.trim() !== "") {
+  //     await fetch("/messages", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         text: inputMessage,
+  //         sender: "Me",
+  //       }),
+  //     });
+
+  //     setInputMessage("");
+  //     fetchMessages();
+  //   }
+  // };
 
   return (
     <View style={{ flex: 1, padding: 10 }}>

@@ -28,12 +28,33 @@ const ChatListPage = ({ route }) => {
     },
     {
       id: 3,
-      groupName: "Nathanael",
-      lastMessage: "Bonjour Monsieur",
+      groupName: "Mr.Cherrier",
+      lastMessage: "Peut-on continuer l'appli jusqu'à vendredi svp?",
     },
     {
       id: 4,
+      groupName: "Mom",
+      lastMessage: "What would you like for dinner?",
+    },
+    {
+      id: 5,
+      groupName: "Sis",
+      lastMessage: "Friday lunch at mine",
+    },
+    {
+      id: 6,
+      groupName: "Bro",
+      lastMessage: "Get on discord",
+    },
+    {
+      id: 7,
       groupName: "Dad",
+      lastMessage: "In a meeting...",
+    },
+    {
+      id: 8,
+      groupName: "Coco",
+      lastMessage: "Meow",
     },
   ];
 
@@ -74,7 +95,17 @@ const ChatListPage = ({ route }) => {
             activeOpacity={1}
             onPress={() => setModalVisible(false)} // Close the modal when the transparent area is pressed
           ></TouchableOpacity>
-          <View style={styles.modalContainer}>{<Text>Hello</Text>}</View>
+          <View style={styles.modalContainer}>
+            {
+              <>
+                <Text>All your contacts are already in your ChatList</Text>
+                <Button
+                  title="Go Back"
+                  onPress={() => setModalVisible(false)}
+                />
+              </>
+            }
+          </View>
         </Modal>
         <FlatList
           data={groupList}

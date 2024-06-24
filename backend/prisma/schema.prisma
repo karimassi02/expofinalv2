@@ -33,3 +33,11 @@ model Message {
   sender     User   @relation("sentMessages", fields: [senderId], references: [id])
   receiver   User   @relation("receivedMessages", fields: [receiverId], references: [id])
 }
+
+// model Message {
+//   id        String    @id @default(auto()) @map("_id") @db.ObjectId
+//   text      String
+//   createdAt DateTime @default(now())
+//   sender    User      @relation("sentMessages", fields: [senderId], references: [id])
+//   senderId  String
+// }

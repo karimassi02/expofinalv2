@@ -40,6 +40,18 @@ const ContactListPage = ({ route }) => {
       id: 7,
       groupName: "Bro",
     },
+    {
+      id: 8,
+      groupName: "Coco",
+    },
+    {
+      id: 9,
+      groupName: "Aunt",
+    },
+    {
+      id: 10,
+      groupName: "Uncle",
+    },
   ];
 
   const userId = route.params?.userId;

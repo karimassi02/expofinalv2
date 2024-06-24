@@ -137,13 +137,13 @@ app.get("/user/:id/bio", async (req, res) => {
   }
 });
 
-// Retrieve messages
+// fetch messages
 app.get("/messages", async (req, res) => {
   const messages = await prisma.message.findMany();
   res.json(messages);
 });
 
-// Create a new message
+// create message
 app.post("/messages", async (req, res) => {
   const { text, sender } = req.body;
 
