@@ -5,9 +5,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const ContactListPage = ({ route }) => {
   const navigation = useNavigation();
-  const handleGroupPress = (groupName) => {
-    navigation.navigate("Chatroom", { groupName });
-  };
 
   const [modalVisible, setModalVisible] = useState(false);
   const handleButtonPress = () => {
@@ -30,6 +27,18 @@ const ContactListPage = ({ route }) => {
     {
       id: 4,
       groupName: "Dad",
+    },
+    {
+      id: 5,
+      groupName: "Mom",
+    },
+    {
+      id: 6,
+      groupName: "Sis",
+    },
+    {
+      id: 7,
+      groupName: "Bro",
     },
   ];
 
@@ -79,7 +88,7 @@ const ContactListPage = ({ route }) => {
           data={groupList}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => handleGroupPress(item.groupName)}>
+            <TouchableOpacity>
               <View style={styles.groupContainer}>
                 <Text style={styles.groupTitle}>{item.groupName}</Text>
               </View>

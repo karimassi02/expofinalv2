@@ -20,6 +20,7 @@ model User {
   name String
   lastName String
   password  String
+  bio String?
   sentMessages     Message[] @relation("sentMessages")
   receivedMessages Message[] @relation("receivedMessages")
 }

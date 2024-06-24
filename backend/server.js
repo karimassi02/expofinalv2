@@ -98,8 +98,7 @@ app.get("/messages", async (req, res) => {
   res.json(messages);
 });
 
-// Fetch user data
-//update bio
+//update user bio
 app.put("/user/:id", async (req, res) => {
   const { id } = req.params;
   const { bio } = req.body;
@@ -115,6 +114,47 @@ app.put("/user/:id", async (req, res) => {
     console.error("Error updating user bio:", error);
     res.status(500).json({ error: "Internal server error" });
   }
+});
+
+// Fetch user bio
+app.get("/user/:id/bio", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: parseInt(id) },
+    });
+
+    if (!user) {
+      res.status(404).json({ error: "User not found" });
+      return;
+    }
+
+    res.json({ bio: user.bio });
+  } catch (error) {
+    console.error("Error fetching user bio:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Retrieve messages
+app.get("/messages", async (req, res) => {
+  const messages = await prisma.message.findMany();
+  res.json(messages);
+});
+
+// Create a new message
+app.post("/messages", async (req, res) => {
+  const { text, sender } = req.body;
+
+  const newMessage = await prisma.message.create({
+    data: {
+      text,
+      sender,
+    },
+  });
+
+  res.json(newMessage);
 });
 
 app.listen(3000, () => console.log("Server is running on port 3000"));

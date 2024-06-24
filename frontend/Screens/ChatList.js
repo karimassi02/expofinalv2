@@ -2,6 +2,7 @@ import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, StyleSheet, Button, Modal } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import ContactListPage from "./ContactList";
 
 const ChatListPage = ({ route }) => {
   const navigation = useNavigation();
@@ -36,7 +37,7 @@ const ChatListPage = ({ route }) => {
     },
   ];
 
-  const userId = route.params?.userId;
+  const userId = route?.params?.userId;
 
   useEffect(() => {
     // Fetch chat list or other user-specific data using userId
@@ -73,11 +74,8 @@ const ChatListPage = ({ route }) => {
             activeOpacity={1}
             onPress={() => setModalVisible(false)} // Close the modal when the transparent area is pressed
           ></TouchableOpacity>
-          <View style={styles.modalContainer}>
-            {/* Add your modal content here */}
-          </View>
+          <View style={styles.modalContainer}>{<Text>Hello</Text>}</View>
         </Modal>
-        <View>{/* Modal Content */}</View>
         <FlatList
           data={groupList}
           keyExtractor={(item) => item.id.toString()}

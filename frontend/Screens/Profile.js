@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, TextInput, View, StyleSheet, Text } from "react-native";
+import { Button, TextInput, View, StyleSheet, Text, Alert } from "react-native";
 import axios from "axios";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
@@ -8,32 +8,30 @@ const ProfileScreen = () => {
   const route = useRoute();
   //   const [token, setToken] = useState(null);
   const [bio, setBio] = useState("");
+  const [updatedBio, setUpdatedBio] = useState("");
 
-  //   useEffect(() => {
-  //     const { user: userInfo } = route.params || {};
-  //     setUser(userInfo);
-  //   }, [route.params]);
+  // useEffect(() => {
+  const fetchUserBio = async () => {
+    const userId = route.params?.userId;
 
-  //   useEffect(() => {
-  //     const fetchUserData = async () => {
-  //       try {
-  //         const response = await axios.get("/user", {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         });
-  //         setUser(response.data);
-  //       } catch (error) {
-  //         console.error("Error fetching user data:", error);
-  //       }
-  //     };
+    if (!userId) {
+      console.error("User ID is undefined or null. Cannot fetch bio.");
+      return;
+    }
 
-  //     fetchUserData();
-  //   }, [token]);
+    try {
+      const response = await axios.get(
+        `http://192.168.0.12:3000/user/${userId}/bio`
+      );
+      setBio(response.data.bio);
+      setUpdatedBio(response.data.bio);
+    } catch (error) {
+      console.error("Error fetching user bio:", error);
+    }
+  };
 
-  //   if (!user) {
-  //     return <Text>Loading...</Text>;
-  //   }
+  //   fetchUserBio();
+  // }, [route.params?.userId]);
 
   const updateBio = () => {
     const userId = route.params?.userId;
@@ -47,6 +45,9 @@ const ProfileScreen = () => {
       .put(`http://192.168.0.12:3000/user/${userId}`, { bio })
       .then((response) => {
         console.log("Bio updated:", response.data);
+        Alert.alert("Super !", "Your bio has been successfully updated");
+        setBio("");
+        setUpdatedBio(response.data.bio);
       })
       .catch((error) => {
         console.error("Failed to update bio:", error);
@@ -68,8 +69,9 @@ const ProfileScreen = () => {
   };
   return (
     <View style={styles.mainView}>
-      {/* <Text style={styles.label}>First Name:</Text>
-      <Text style={styles.value}>{user.name}</Text>
+      <Text style={styles.label}> Bio/Status:</Text>
+      <Text style={styles.value}>{updatedBio}</Text>
+      {/* 
 
       <Text style={styles.label}>Last Name:</Text>
       <Text style={styles.value}>{user.lastName}</Text>
@@ -79,24 +81,31 @@ const ProfileScreen = () => {
 
       <Text style={styles.label}>Password:</Text>
       <Text style={styles.value}>{"*".repeat(user.password?.length || 8)}</Text> */}
+      {/* <Text>{bio}</Text> */}
 
       <TextInput
-        style={styles.bioInput}
-        placeholder="Enter your bio/status"
+        style={styles.input}
         value={bio}
-        onChangeText={setBio}
+        onChangeText={(text) => setBio(text)}
+        placeholder="Enter your bio/status"
+        multiline
       />
-      <Button title="Update Bio" onPress={updateBio} />
+      <Button
+        title="Update Bio"
+        onPress={updateBio}
+        color="black"
+        backgroundColor="white"
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   mainView: {
-    marginTop: 40,
     flex: 1,
     flexDirection: "column",
     padding: 20,
+    backgroundColor: "#f5f5f5",
   },
   label: {
     fontSize: 18,
@@ -106,6 +115,16 @@ const styles = StyleSheet.create({
   value: {
     fontSize: 18,
     marginBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "black",
+  },
+  input: {
+    width: "100%",
+    padding: 10,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: "black", // Example border color
+    borderRadius: 5,
   },
 });
 
