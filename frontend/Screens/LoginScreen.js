@@ -34,15 +34,6 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    // <View>
-    //   <TextInput placeholder="Email" onChangeText={setEmail} />
-    //   <TextInput
-    //     placeholder="Password"
-    //     onChangeText={setPassword}
-    //     secureTextEntry
-    //   />
-    //   <Button title="Login" onPress={login} />
-    // </View>
     <View style={styles.mainView}>
       <View style={styles.topView}>
         <Image

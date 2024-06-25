@@ -41,3 +41,10 @@ model Message {
 //   sender    User      @relation("sentMessages", fields: [senderId], references: [id])
 //   senderId  String
 // }
+
+// model Group{
+//   id String @id @default(auto()) @map("_id") @db.ObjectId
+//   name String?
+//   members User[]
+//   messages Message[]
+// }

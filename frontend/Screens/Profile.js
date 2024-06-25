@@ -71,17 +71,6 @@ const ProfileScreen = () => {
     <View style={styles.mainView}>
       <Text style={styles.label}> Bio/Status:</Text>
       <Text style={styles.value}>{updatedBio}</Text>
-      {/* 
-
-      <Text style={styles.label}>Last Name:</Text>
-      <Text style={styles.value}>{user.lastName}</Text>
-
-      <Text style={styles.label}>Email:</Text>
-      <Text style={styles.value}>{user.email}</Text>
-
-      <Text style={styles.label}>Password:</Text>
-      <Text style={styles.value}>{"*".repeat(user.password?.length || 8)}</Text> */}
-      {/* <Text>{bio}</Text> */}
 
       <TextInput
         style={styles.input}

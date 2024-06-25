@@ -65,14 +65,6 @@ const ContactListPage = ({ route }) => {
   return (
     <>
       <View style={styles.container}>
-        {/* <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "bold",
-            paddingBottom: 10,
-            paddingTop: 25,
-          }}
-        ></Text> */}
         <Button
           title="New contact"
           onPress={handleButtonPress}
@@ -89,7 +81,7 @@ const ContactListPage = ({ route }) => {
           <TouchableOpacity
             style={styles.modalBackground}
             activeOpacity={1}
-            onPress={() => setModalVisible(false)} // Close the modal when the transparent area is pressed
+            onPress={() => setModalVisible(false)} // fermer le modal
           ></TouchableOpacity>
           <View style={styles.modalContainer}>
             {/* Add your modal content here */}

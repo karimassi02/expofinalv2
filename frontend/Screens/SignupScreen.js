@@ -11,7 +11,6 @@ import {
 import axios from "axios";
 
 const SignupScreen = ({ navigation }) => {
-  //   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,7 +25,6 @@ const SignupScreen = ({ navigation }) => {
   }
 
   const signup = () => {
-    console.log("Signup button pressed");
     axios
       .post("http://192.168.0.12:3000/signup", {
         name,
@@ -50,16 +48,6 @@ const SignupScreen = ({ navigation }) => {
 
   return (
     <>
-      {/* <View>
-        <TextInput placeholder="Username" onChangeText={setUsername} />
-        <TextInput placeholder="Email" onChangeText={setEmail} />
-        <TextInput
-          placeholder="Password"
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        <Button title="Signup" onPress={signup} />
-      </View> */}
       <View style={styles.mainView}>
         <View style={styles.topView}>
           <Image

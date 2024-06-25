@@ -11,6 +11,7 @@ const Chatroom = ({ groupName }) => {
       setInputMessage("");
     }
   };
+  //below is a failed attempt to fetch messages
 
   // useEffect(() => {
   //   fetchMessages();

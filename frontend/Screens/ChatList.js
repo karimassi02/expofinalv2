@@ -60,23 +60,13 @@ const ChatListPage = ({ route }) => {
 
   const userId = route?.params?.userId;
 
-  useEffect(() => {
-    // Fetch chat list or other user-specific data using userId
-  }, [userId]);
+  useEffect(() => {}, [userId]);
 
   const [groupList, setGroupList] = useState(initialGroups);
 
   return (
     <>
       <View style={styles.container}>
-        {/* <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "bold",
-            paddingBottom: 10,
-            paddingTop: 25,
-          }}
-        ></Text> */}
         <Button
           title="New Chat"
           onPress={handleButtonPress}
@@ -93,7 +83,7 @@ const ChatListPage = ({ route }) => {
           <TouchableOpacity
             style={styles.modalBackground}
             activeOpacity={1}
-            onPress={() => setModalVisible(false)} // Close the modal when the transparent area is pressed
+            onPress={() => setModalVisible(false)}
           ></TouchableOpacity>
           <View style={styles.modalContainer}>
             {
