@@ -22,11 +22,11 @@ const LoginScreen = ({ navigation }) => {
     axios
       .post("http://192.168.0.12:3000/login", { email, password })
       .then((response) => {
-        // Handle successful login here
+        // handle login success
         navigation.navigate("home");
       })
       .catch((error) => {
-        // Handle failed login here
+        // handle login failure
         Alert.alert("Oops...", "Your username or password is incorrect !", [
           { text: "OK", onPress: () => navigation.navigate("Login") },
         ]);
